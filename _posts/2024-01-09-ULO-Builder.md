@@ -1,9 +1,9 @@
 ---
-title: ESP OpenWrt Monitor
+title: ULO Builder
 tags: [Amlogic, Builder, OpenWRT, Linux, s905x, s905x2, s905x3, S905x4]
 style: 
 color: primary
-description: A tiny network Monitoring Network & Resources OpenWRT with ESP or NodeMCU
+description: ULO OpenWRT/Linux Builder For Amlogic Devices
 ---
 
 # ULO Builder for OpenWRT
