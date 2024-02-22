@@ -22,6 +22,9 @@ description: Install OpenWrt di Orbit Pro 2 - ZTE MF286R
 
 - Dari 3 metode yang tertulis di dokumentasi blog [openwrt.org](https://openwrt.org) hanya 1 yang bisa yaitu via USB Serial TTL dengan baudrate speed `115200`
 - Cek foto untuk mengetahui `TX RX GND`
+  <p align="left">
+    <img src="https://media.discordapp.net/attachments/1210095423201611827/1210176822663315496/image.png?ex=65e99bfe&is=65d726fe&hm=c3bf20065c4fd189b4b119b70fb80733d7abadebb7440944593cb475909d9c49&=&format=webp&quality=lossless&width=573&height=683" width="75%" />
+  </p>
 - Hidupkan router, ketika sudah benar-benar hidup, masuk ke terminal serial lalu tekan ENTER
 
 # STEP 2: Backup Firmware Original
