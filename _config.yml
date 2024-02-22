@@ -7,7 +7,6 @@ repository          : armarchindo/dbai      # Change to <your-username>/<your-us
 remote_theme        : armarchindo/BlogTemplate
 open_new_tab        : false                             # Opens external URLs in new tab (works for posts, projects and navbar only)
 
-
 ### Plugins ###
 plugins:
   - jemoji
