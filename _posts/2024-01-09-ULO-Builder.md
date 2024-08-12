@@ -14,6 +14,7 @@ description: ULO OpenWRT/Linux Builder For Amlogic Devices
 https://github.com/user-attachments/assets/f9b25d81-a364-4bc9-8b84-173cfa0e099e
 
 ## Supported Devices
+List Devices 
 | Amlogic | Allwinner | Rockchip |
 | -------- | ------- | ------- | 
 | **S905X** | **H5** (`Orange Pi Zero Plus 2`, `Orange Pi Zero Plus`, `Orange Pi Prime`, `Orange Pi PC2`) | **RK3566** (`Orange Pi 3B`) |
