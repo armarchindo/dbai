@@ -131,8 +131,9 @@ root@A2OS:~# hwclock -r -f /dev/rtc1
 ```bash
 echo rtc-ds1307 | tee /etc/modules.d/rtc-ds1307
 ```
-- Edit file `/etc/init.d/sysfixtime` dengan menggunakan tinyfilemanager atau FTP
+- Edit file `/etc/init.d/sysfixtime` dengan menggunakan tinyfilemanager atau FTP</br>
 ```bash
+
 #!/bin/sh /etc/rc.common
 # Copyright (C) 2013-2014 OpenWrt.org
 
@@ -178,8 +179,9 @@ find_max_time() {
 	[ "$newest" ] && date -r "$newest" +%s
 }
 ```
-  Atas sebelum diedit, Bawah Setelah diedit
+  Atas sebelum diedit, Bawah Setelah diedit</br>
 ```bash
+
 #!/bin/sh /etc/rc.common
 # Copyright (C) 2013-2014 OpenWrt.org
 
