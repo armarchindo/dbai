@@ -2,7 +2,7 @@
 title: Implementasi RTC Pada Device Orange PI Zero3 di OpenWRT
 tags: [OpenWRT, Linux, RTC]
 style: 
-color: success
+color: danger
 description: Implementasi RTC Pada Device Orange PI Zero3 di OpenWRT
 ---
 
