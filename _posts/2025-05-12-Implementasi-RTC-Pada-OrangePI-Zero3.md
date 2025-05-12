@@ -131,15 +131,8 @@ root@A2OS:~# hwclock -r -f /dev/rtc1
 ```bash
 echo rtc-ds1307 | tee /etc/modules.d/rtc-ds1307
 ```
-- Edit file `/etc/init.d/sysfixtime` dengan menggunakan tinyfilemanager atau FTP
+- Edit file `/etc/init.d/sysfixtime` dengan menggunakan tinyfilemanager atau FTP pada fungsi `boot()`
 ```bash
-START=00
-STOP=90
-
-RTC_DEV=/dev/rtc0
-HWCLOCK=/sbin/hwclock
-
-boot() {
 	hwclock_load
 	local maxtime="$(find_max_time)"
 	local curtime="$(date +%s)"
@@ -147,82 +140,20 @@ boot() {
 		date -s @$maxtime
 		hwclock_save
 	fi
-}
-
-start() {
-	hwclock_load
-}
-
-stop() {
-	hwclock_save
-}
-
-hwclock_load() {
-	[ -e "$RTC_DEV" ] && [ -e "$HWCLOCK" ] && $HWCLOCK -s -u -f $RTC_DEV
-}
-
-hwclock_save(){
-	[ -e "$RTC_DEV" ] && [ -e "$HWCLOCK" ] && $HWCLOCK -w -u -f $RTC_DEV && \
-		logger -t sysfixtime "saved '$(date)' to $RTC_DEV"
-}
-
-find_max_time() {
-	local file newest
-
-	for file in $( find /etc -type f ) ; do
-		[ -z "$newest" -o "$newest" -ot "$file" ] && newest=$file
-	done
-	[ "$newest" ] && date -r "$newest" +%s
-}
 ```
   Atas sebelum diedit, Bawah Setelah diedit
 ```bash
-START=00
-STOP=90
+	insmod rtc-ds1307
+	echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-1/new_device
 
-RTC_DEV=/dev/rtc1
-HWCLOCK=/usr/sbin/hwclock
-
-boot() {
-
-        insmod rtc-ds1307
-        echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-1/new_device
-
-        hwclock_load
-        $HWCLOCK -s -f $RTC_DEV
-        local maxtime="$(find_max_time)"
-        local curtime="$(date +%s)"
-        #if [ $curtime -lt $maxtime ]; then
-        #       date -s @$maxtime
-        #       hwclock_save
-        #fi
-}
-
-start() {
-        hwclock_load
-}
-
-stop() {
-        hwclock_save
-}
-
-hwclock_load() {
-        [ -e "$RTC_DEV" ] && [ -e "$HWCLOCK" ] && $HWCLOCK -s -u -f $RTC_DEV
-}
-
-hwclock_save(){
-        [ -e "$RTC_DEV" ] && [ -e "$HWCLOCK" ] && $HWCLOCK -w -u -f $RTC_DEV && \
-                logger -t sysfixtime "saved '$(date)' to $RTC_DEV"
-}
-
-find_max_time() {
-        local file newest
-
-        for file in $( find /etc -type f ) ; do
-                [ -z "$newest" -o "$newest" -ot "$file" ] && newest=$file
-        done
-        [ "$newest" ] && date -r "$newest" +%s
-}
+	hwclock_load
+	$HWCLOCK -s -f $RTC_DEV
+	local maxtime="$(find_max_time)"
+	local curtime="$(date +%s)"
+	#if [ $curtime -lt $maxtime ]; then
+	#	date -s @$maxtime
+	#	hwclock_save
+	#fi
 ```
 - Reboot device untuk mengecek bahwa script tersebut berjalan normal
 
